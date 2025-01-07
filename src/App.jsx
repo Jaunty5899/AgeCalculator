@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { DateTime } from "luxon";
 import "./App.css";
 
 function App() {
-  const [date, setdate] = useState();
-
+  const [age, setAge] = useState();
   return (
     <div className="container">
       <span id="title">Age Calculator</span>
@@ -17,6 +17,7 @@ function App() {
         />
         <button type="submit">Calculate</button>
       </form>
+      <span id="ageBlock">You are 21 days 15 years old</span>
     </div>
   );
 }
