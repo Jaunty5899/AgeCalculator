@@ -3,7 +3,9 @@ import { DateTime } from "luxon";
 import "./App.css";
 
 function App() {
-  const [age, setAge] = useState();
+  const [age, setAge] = useState(0);
+
+  console.log(age);
   return (
     <div className="container">
       <span id="title">Age Calculator</span>
@@ -12,12 +14,19 @@ function App() {
         <input
           type="date"
           id="date"
-          value={date}
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setAge(
+              Math.floor(
+                DateTime.now().diff(DateTime.local(e.target.value), ["years"])
+                  .years
+              )
+            );
+          }}
         />
         <button type="submit">Calculate</button>
       </form>
-      <span id="ageBlock">You are 21 days 15 years old</span>
+      <span id="ageBlock">You are {age} years old.</span>
     </div>
   );
 }
